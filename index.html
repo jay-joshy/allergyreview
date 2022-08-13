@@ -1,0 +1,217 @@
+<!-- very important links
+https://websitesetup.org/bootstrap-tutorial-for-beginners/#include-jquery
+
+for the search/cindx
+https://www.w3schools.com/howto/howto_js_filter_table.asp
+
+https://www.youtube.com/watch?v=k1XN6PwJpzU&ab_channel=DanielC
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Links to bootstrap 5 locally and spreadsheetcss -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script> -->
+
+    <!-- add bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <!-- Navbar-->
+    <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Allergy_JY_Test</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- buttons on right-side of navbar -->
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="basics.html" class="nav-link">
+                            Basics
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="cindex.html" class="nav-link">
+                            Condition Index
+                        </a>
+                    </li>
+
+                    <li class="nav-item" onclick="clearStorage()">
+                        <a href="" class="nav-link">
+                            Clear Local Storage
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header is the main container for content, with overlaid background photo -->
+    <header class="page-header header container-fluid" style="padding-top: 60px;" id="background">
+        <div class="overlay"></div>
+
+        <!-- Need features in order for the text to properly show as white -->
+        <!-- two columns: text and then slideshow of some pathology -->
+        <div class="container-fluid features">
+            <div class="row">
+                <!-- first col for text -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h3 class="feature-title">Quick Links</h3>
+                    <div class="text-center" style="margin-bottom: 1rem;"> 
+                        <a href="penfast.html">
+                            <button class="indexButton">
+                                PENFAST
+                            </button>
+                        </a>
+
+                        <a href="cindex.html">
+                            <button class="indexButton">
+                                Condition Index
+                            </button>
+                        </a>
+                    </div>
+
+                    <h3 class="feature-title">About</h3>
+                    <p>
+                        This resource requires internet. This is a introductory high-yield overview of common dermatological conditions. Resources used are cited in each individual article. Content
+                        within is not a substitute for medical advice and this resource is intended for clinical use by
+                        physicians.
+                        </br>
+                        </br>
+                        Created by a medical student at McMaster (2022).                       
+                    </p>
+
+                    <!-- https://www.w3schools.com/howto/howto_css_responsive_iframes.asp -->
+                    <!-- <div class="containerForMovie">
+                        <iframe class="responsive-iframe" width="100%" src="https://www.youtube.com/embed/Ijae4iURrDI"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div> -->
+                    </br>
+
+                    <h3 class="feature-title">Nerdy Details</h3>
+                    <p>
+                        Website/app was built using HTML5, javascript, css with bootstrap, and maybe some .csv files in the 'backend' on GitHub. Android developer was used to create the app. Images are loaded locally, backgrounds are .svgs :).
+                    </p>
+
+                    
+
+                   
+                    
+
+                    
+                    
+                    
+
+
+                </div>
+                <!-- second col for slideshow -->
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    <!--slideshow-->
+                    <div class="containerSlide" style="height: auto;">
+                        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                                    aria-current="false" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="containerSlide text-center"style="height: auto;">
+                                        <img src="images/index_01.jpg" class="img-fluid" alt="">
+                                        <div class="carousel-caption" style="color: black;">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="containerSlide text-center"style="height: auto;">
+                                        <img src="images/impetigo_dermN_01.jpg" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="containerSlide text-center"style="height: auto;">
+                                        <img src="images/cellulitis_UTD_01.jpg" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- this is a test thing  -->
+            <div> 
+                <img src="images/catSVG.svg" alt="" style="height:35vh"class="filter-green">
+            </div>
+        </div>
+    </header>
+
+    <!-- footer at bottom of page -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Contact link    :</h6>
+                    <p><a  style="text-decoration: none; color:white;" href="https://forms.gle/xFZ4GEqJgycuLs5r7">https://forms.gle/xFZ4GEqJgycuLs5r7</a></p>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Did you know?</h6>
+                    <p id="funfact">
+                        <br />
+                    </p>
+                </div>
+                
+                    <div class="footer-copyright text-center">©2022</div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/myscripts.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script>
+        //img = "images/cellulitis_dermN_01.jpg"
+        //document.getElementById("insert").innerHTML = '<img src="' + img + '" />'
+        
+        randomBackground();
+        populateFunFacts();      
+
+        
+
+    </script>
+</body>
+
+</html>

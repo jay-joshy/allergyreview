@@ -1,0 +1,348 @@
+<!-- very important links
+https://websitesetup.org/bootstrap-tutorial-for-beginners/#include-jquery
+
+for the search/cindx
+https://www.w3schools.com/howto/howto_js_filter_table.asp
+
+making nice boxes for tezt
+https://code-boxx.com/box-around-text-html/
+-->
+
+<!-- 
+    IMPORTANT:
+    TO POPULATE THE PAGE CORRECTLY, YOU MUST
+    1. manually insert links for pictures
+    2. at the bottom <script> enter in your condition name from the CSV
+    var infoarray = getJSONobjectStringArray("Condition Name");
+
+    For writing in CSV: you cannot use semicolons or enters. Instead of enters, use + or <br>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Links to bootstrap 5 and also stylesheet -->
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+</head>
+
+<body id="body">
+    <!-- Navbar-->
+    <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark" style = "height: 10vh;">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">JY_Allergy_Test</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- buttons on right-side of navbar -->
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="basics.html" class="nav-link">
+                            Basics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cindex.html" class="nav-link" style="padding-right: 1rem;">
+                            Condition Index
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header is the main container for content, with overlaid background photo -->
+    <div class="header container-fluid" style="padding-top: 60px;" id="top">
+        <div class="overlay"></div>
+
+        <!-- Need features in order for the text to properly show as white -->
+        <!-- text wrapping around containerSlide with images on right side.
+             Images should all be potrait ratio for now -->
+        <div class="container-fluid features">
+
+            <!-- Iteractive Calc on right -->
+            <div class="container-fluid col-lg-7 col-md-7 col-sm-12 float-sm-end" style="padding-bottom: 5vh;">
+                <div class="cleandarkBox">
+                    <table class="questionTable" style="width:100%">
+                        <tr class="questionTableRow">
+                            <td>F - Five years or less since reaction</td>
+                            <td style="width:120px;">
+
+                                <label class="qswitch">
+                                    <input type="checkbox" unchecked id="q1">
+                                    <span class="qslider round"></span>
+                                </label>
+
+                            </td>
+
+                        </tr>
+                        <tr class="questionTableRow">
+                            <td>A - Anaphylaxis or angioedema</td>
+                            <td>
+                                <label class="qswitch">
+                                    <input type="checkbox" unchecked id="q2">
+                                    <span class="qslider round"></span>
+                                </label>
+                            </td>
+
+                        </tr>
+                        <tr class="questionTableRow">
+                            <td> S - Severe cutaneous adverse reaction
+
+                            </td>
+                            <td>
+                                <label class="qswitch">
+                                    <input type="checkbox" unchecked id="q3">
+                                    <span class="qslider round"></span>
+                                </label>
+                            </td>
+
+                        </tr>
+                        <tr class="questionTableRow">
+                            <td>T - Treatment required for reaction</td>
+                            <td>
+                                <label class="qswitch">
+                                    <input type="checkbox" unchecked id="q4">
+                                    <span class="qslider round"></span>
+                                </label>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="diagtxbox">
+                    <h3 class="feature-subtitle">SCORE:</h3>
+                    <p id="scorereport"></p>
+
+
+                    <h3 class="feature-subtitle">Next Steps:</h3>
+                    <p>
+                    </br>
+                    </br>
+                    </p>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- information about tool on left -->
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="conNameBox">
+                    <h3 class="feature-title text-center">PEN-FAST - Penicillin Allergy Risk Tool</h3>
+                </div>
+
+                <!-- PENFAST information -->
+                <div class="cleandarkBox">
+                    <!-- Definition -->
+                    <p style="padding-top: 0.5rem;">Clinical decision rule for point-of-care risk assessment of
+                        patient-reported penicillin allergies.</p>
+                </div>
+            </div>
+
+            <!-- PENFAST qs-->
+            <div class="diagtxbox col-lg-5 col-md-5 col-sm-12" id="DTbox" style="height: 55vh;">
+                <div class = "scrollbox" style="max-height:100%;overflow:auto;">
+                    <h3 class="feature-subtitle"><i class="bi bi-search"></i> Details:</h3>
+                    <p style="font-weight: bold;">Only patients who report a penicillin allergy are eligible for PEN-FAST.</p>
+                    <p>A severe cutaneous adverse drug reaction includes Stevens-Johnson syndrome, toxic epidermal necrolysis, DRESS, or acute generalized
+                        exanthematous pustulosis. Acute interstitial nephritis, drug induced liver injury, serum sickness and isolated drug fever are not counted.
+                    </p>
+
+                    <h3 class="feature-subtitle"><i class="bi bi-graph-up" style="color: rgb(18, 37, 73);"></i> Risk of a
+                        positive penicillin allergy test</h3>
+                    <ul>
+                        <li id="0p">0 points – Neglibable risk of positive penicillin allergy test </li>
+                        <li id="1-2p">1-2 points – Low risk of positive penicillin allergy test 5%</li>
+                        <li id="3p">3 points – Moderate risk of positive penicillin allergy test 20%</li>
+                        <li id="4p">4 points – High risk of positive penicillin allergy test 50%</li>
+                    </ul>
+
+
+                    <div id = "linksbox">
+                        <h3 class="feature-subtitle dropdown" style="padding-bottom: 0.5rem;" data-bs-toggle="collapse" data-bs-target="#links">
+                            
+                            References <i class="bi bi-plus-lg" style="color: black;" id="refIcon"></i>
+                        </h3>
+                        <ul id = "links" class="collapse">
+                            Trubiano JA, Vogrin S, Chua KYL et al.</br>
+                        Development and Validation of a Penicillin Allergy Clinical Decision Rule. JAMA Internal Med.
+                        Published March 16, 2020. doi:10.1001/jamainternmed.2020.0403
+                        </ul>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- footer at bottom of page -->
+    <footer class="page-footer">
+        <div class="container">
+            <!-- <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Contact link :</h6>
+                    <p><a style="text-decoration: none; color:white;"
+                            href="https://forms.gle/xFZ4GEqJgycuLs5r7">https://forms.gle/xFZ4GEqJgycuLs5r7</a></p>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Did you know?</h6>
+                    <p id="funfact">
+                        <br />
+                    </p>
+                </div>
+                <div> -->
+                    <div class="footer-copyright text-center">©2022</div>
+    </footer>
+
+    <script src="js/myscripts.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script>
+        
+function randomBackground(){
+  var other = "background-size: cover;background-position: center;position: relative; height: auto; background-repeat: no-repeat; background-attachment: fixed;"
+  var images = ["images/svgBack7.svg"];
+  document.getElementsByClassName("header")[0].style = "background-image: "+'url("'+images[Math.floor(Math.random() * images.length)]+'");'+other+"padding-top:4rem;";
+}
+
+function populateFunFacts(){
+  facts = ["Zofran is not a first-line anti-emetic for undifferentiated nausea. Use Maxeran :].",
+          "Did you know that macrobid comes from nitrofurantoin? MACROcrystals taken BID",
+          "As of 2021, using only SABAs as a reliever for asthma is not recommended.",
+          "A vasovagal method in pediatrics is placing ice on the face.",
+          "The brief ddx for a fever is infectious, inflammatory, and malignant.",
+          "When thinking about Kawasaki disease, think Warm CREAM.",
+          "The creator of this website/application likes BBQ sauce.",
+          "Febrile seizures are classified as typical vs atypical/complex."
+          ];
+  document.getElementById("funfact").innerHTML = facts[Math.floor(Math.random() * facts.length)];
+}
+
+function collapseIcon(collapseID, iconID){
+  var myCollapsible = document.getElementById(collapseID)
+  myCollapsible.addEventListener('hide.bs.collapse', function () {
+    document.getElementById(iconID).className = "bi bi-plus-lg";
+  })
+  myCollapsible.addEventListener('show.bs.collapse', function () {
+    document.getElementById(iconID).className = "bi bi-dash-lg";
+  })
+}
+        
+        randomBackground();
+        //populateFunFacts();
+        collapseIcon("links","refIcon");
+
+        function boldScore(score) {
+            var none = document.getElementById("0p")
+            var low = document.getElementById("1-2p")
+            var med = document.getElementById("3p")
+            var high = document.getElementById("4p")
+            var description = 'Very low risk (<1%) of positive penicillin allergy test'
+
+            if (score == 0) {
+                low.setAttribute("style", "font-weight: normal;");
+                med.setAttribute("style", "font-weight: normal;");
+                high.setAttribute("style", "font-weight: normal;");
+                description = "Very low risk (<1%) of positive penicillin allergy test"
+            }
+
+            if (score == 1 || score == 2) {
+                low.setAttribute("style", "font-weight: bold;");
+                med.setAttribute("style", "font-weight: normal;");
+                high.setAttribute("style", "font-weight: normal;");
+                description = "Low risk (5%) of positive penicillin allergy test"
+            }
+            else if (score == 3) {
+                low.setAttribute("style", "font-weight: normal;");
+                med.setAttribute("style", "font-weight: bold;");
+                high.setAttribute("style", "font-weight: normal;");
+                description = "Moderate risk (20%) of positive penicillin allergy test"
+            }
+            else if (score == 4) {
+                low.setAttribute("style", "font-weight: normal;");
+                med.setAttribute("style", "font-weight: normal;");
+                high.setAttribute("style", "font-weight: bold;");
+                description = "High risk (50%) of positive penicillin allergy test"
+            }
+            return description;
+        }
+
+        function tallyScore() {
+            document.addEventListener('DOMContentLoaded', function () {
+                var q1 = document.getElementById("q1")
+                var q2 = document.getElementById("q2")
+                var q3 = document.getElementById("q3")
+                var q4 = document.getElementById("q4")
+                var scoredisplay = document.getElementById('scorereport');
+                var score = 0;
+                scoredisplay.innerHTML = score + " points: Very low risk (<1%) of positive penicillin allergy test"
+
+                q1.addEventListener('change', function () {
+                    if (q1.checked) {
+                        score = score + 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    } else {
+                        score = score - 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    }
+                });
+                q2.addEventListener('change', function () {
+                    if (q2.checked) {
+                        score = score + 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    } else {
+                        score = score - 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    }
+                });
+                q3.addEventListener('change', function () {
+                    if (q3.checked) {
+                        score = score + 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    } else {
+                        score = score - 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    }
+                });
+                q4.addEventListener('change', function () {
+                    if (q4.checked) {
+                        score = score + 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    } else {
+                        score = score - 1
+                        scoredisplay.innerHTML = score + " points: " + boldScore(score)
+                    }
+                });
+
+
+            });
+
+        }
+        tallyScore()
+
+    </script>
+</body>
+
+</html>

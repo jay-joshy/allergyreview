@@ -1,0 +1,675 @@
+<!-- very important links
+https://websitesetup.org/bootstrap-tutorial-for-beginners/#include-jquery
+
+for the search/cindx
+https://www.w3schools.com/howto/howto_js_filter_table.asp
+
+making nice boxes for tezt
+https://code-boxx.com/box-around-text-html/
+
+
+https://www.visualdx.com/learnderm/lesions/erosion
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Links to bootstrap 5 and also stylesheet -->
+  <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- add bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <title>Family Dermatology</title>
+</head>
+
+<body>
+  <!-- Navbar-->
+  <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a href="index.html" class="navbar-brand">JY_Dermatology</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- buttons on right-side of navbar -->
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="basics.html" class="nav-link">
+              Basics
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="cindex.html" class="nav-link">
+              Condition Index
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Header is the main container for content, with overlaid background photo -->
+  <header class="page-header header container-fluid" style="padding-top: 60px;">
+    <div class="overlay"></div>
+
+    <div class="container-fluid features">
+      <!-- TOC  -->
+      <div style="display: inline-block;">
+        <h3 class="feature-title" style="display: inline-block;">Contents</h3>
+        <ul>
+          <a href="#DL">
+            <li>Describing lesions</li>
+          </a>
+          <a href="#ATSL">
+            <li>Approach to skin lesions</li>
+          </a>
+          <a href="#CT">
+            <li>Common treatments</li>
+          </a>
+          <a href="#P">
+            <li>Skin Physiology</li>
+          </a>
+          <a href="#R">
+            <li>Resources</li>
+          </a>
+        </ul>
+      </div>
+      <!-- button to expand all -->
+      <div class="float-end">
+        <button onclick="expandAll()" class="basicsExpandButton">
+          Expand all +
+        </button>
+      </div>
+
+      <!-- DESCRIBING LESIONS -->
+      <h3 class="feature-title" id="DL">Describing lesions</h3>
+      <div class="row">
+        <div class="cleandarkBox col-sm-12 col-md-6 col-lg-6">
+          <p>
+            <b>Primary lesion</b>: de-novo un-altered lesion</br>
+            <b>Secondary lesion</b>: evolution of 1' lesion
+          </p>
+
+          <!-- basic descriptors in clean table -->
+          <h3 class="feature-subtitle">Basic lesion descriptors</h3>
+          <table class="table table-sm" id="basicsTable">
+            <caption style="font-size: small; font-style: italic;">Adapted from Toronto Notes 2020</caption>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 20%;">Profile</th>
+                <th scope="col" style="width: 40%; text-align: center;">&lt;1cm diameter</th>
+                <th scope="col" style="width: 40%; text-align: center;">&gt;1cm diameter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Flat</th>
+                <td>Macule</td>
+                <td>Patch</td>
+              </tr>
+              <tr>
+                <th scope="row">Raised superficial</th>
+                <td>Papule</td>
+                <td>Plaque</td>
+              </tr>
+              <tr>
+                <th scope="row">Deep palpable</th>
+                <td>Nodule</td>
+                <td>Tumor</td>
+              </tr>
+              <tr>
+                <th scope="row">Fluid filled</th>
+                <td>Vesicle</td>
+                <td>Bulla</td>
+              </tr>
+            </tbody>
+          </table>
+          <figure class="figure">
+            <a href="images/basics_04.jpeg" target="_blank">
+            <img src="images/basics_04.jpeg" alt="" class="img-basics">
+            </a>
+            <figcaption class="figure-caption text-center" style="color: white;">From Calgary Blackbook</figcaption>
+          </figure>
+
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <!-- for pics -->
+          <figure class="figure">
+            <a href="images/basics_02.png" target="_blank">
+              <img src="images/basics_02.png" class="figure-img img-basics" alt="">
+            </a>
+            <figcaption class="figure-caption text-center" style="color: white;">Summary figure, from Toronto Notes 2020
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cleandarkBox col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 1rem; margin-bottom: 1rem;">
+
+
+          <!-- Other lesion nomenclature collapsable -->
+          <h3 class="feature-subtitle dropdown" data-bs-toggle="collapse" data-bs-target="#collapse1">
+            Other lesion nomenclature <i class="bi bi-plus-lg" style="color: white;" id="icon1"></i>
+          </h3>
+          <div class="collapse expandable" id="collapse1">
+            <!-- other secondary lesions -->
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <th>Excoriation: </th>
+                    <td>Traumatized or abraded skin, usually due to scratching or rubbing.</td>
+                  </tr>
+                  <tr>
+                    <th>Scale: </th>
+                    <td>Flakes of keratin that can be fine or coarse; loose or adherent. Example: Dandruff, seborrheic
+                      dermatitis</td>
+                  </tr>
+                  <tr>
+                    <th>Erosion: </th>
+                    <td>Superficial open wound involving only epidermis or mucosa. Does not extend into the underlying
+                      dermis, so healing occurs without scar formation.</td>
+                  </tr>
+                  <tr>
+                    <th>Ulcer: </th>
+                    <td>Deep open wound extending into the dermis or subcutaneous tissue. May lead to scar formation.
+                      Example: Diabetic foot ulcer, Canker sore</td>
+                  </tr>
+                  <tr>
+                    <th>Crust: </th>
+                    <td>Dried fluid (serum, blood, or purulent exudate) originating from a lesion (e.g. impetigo)</td>
+                  </tr>
+                  <tr>
+                    <th>Eschar: </th>
+                    <td>A scab or dry crust that results from trauma, infection, or excoriating skin disease. It is
+                      necrotic tissue.</td>
+                  </tr>
+                  <tr>
+                    <th>Lichenification: </th>
+                    <td>thickening of the skin and accentuation of normal skin markings (e.g. chronic atopic dermatitis)
+                      usually from chronic rubbing/itching
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Fissure: </th>
+                    <td>Linear slit-like cleavage of the skin</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- easy scroll gall for above-->
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <td><img src="images/basics_excor.png" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Excoriation
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_scale_psor.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Scale from
+                        psoriasis</figcaption>
+                    </td>
+                    <td><img src="images/basics_erosion_burn.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Erosion from
+                        burn</figcaption>
+                    </td>
+                    <td><img src="images/basics_ulcer_diabetic.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Diabetic foot
+                        ulcer</figcaption>
+                    </td>
+                    <td><img src="images/basics_eschar_spider.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Eschar from
+                        spider bite</figcaption>
+                    </td>
+                    <td><img src="images/basics_lichenification.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Lichenification
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_fissure.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center" class="figure-caption">Fissure
+                      </figcaption>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- other lesion terms -->
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <th>Cyst</th>
+                    <td>an internally epithelial, endothelial, or membrane lined structure containing semi-solid
+                      material or fluid</td>
+                  </tr>
+                  <tr>
+                    <th>Pustule</th>
+                    <td>an elevated lesion containing pus</td>
+                  </tr>
+                  <tr>
+                    <th>Scar</th>
+                    <td>replacement fibrosis of dermis and subcutaneous tissue (hypertrophic or atrophic)</td>
+                  </tr>
+                  <tr>
+                    <th>Wheal/hives</th>
+                    <td>a special form of papule or plaque that is transient (&lt;24 h) and blanchable, often with a
+                      halo and central clearing, formed by edema in the dermis (e.g. urticaria)</td>
+                  </tr>
+                  <tr>
+                    <th>Comedone</th>
+                    <td> a special collection of sebum and keratin (whiteheads (open) &#47; blackheads (closed)</td>
+                  </tr>
+                  <tr>
+                    <th>Petechiae</th>
+                    <td>pinpoint extravasation of blood into dermis resulting in hemorrhagic lesions; <b>
+                        nonblanchable</b>, &lt;3 mm in size, usually flat
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Purpura</th>
+                    <td>larger than petechia, 3 mm-1 cm in size. Like tiny bruises, red&#47;purple macules or papules
+                      from capillary hemorrhages under skin. <b> DO NOT blanch with pressure.</b> May be raised.
+                      Example: Thrombocytopenic purpura</td>
+                  </tr>
+                  <tr>
+                    <th>Ecchymosis</th>
+                    <td>larger than purpura, >1 cm in size (i.e. a “bruise”)</td>
+                  </tr>
+                  <tr>
+                    <th>Telangiectasia</th>
+                    <td>dilated superficial blood vessels; blanchable, reticulated, and of small calibre, can be
+                      associated with benign or malignant entities</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- easy scroll gall for above-->
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <td><img src="images/basics_cyst_epidermoid.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Epidermoid Cyst
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_pustule_acne.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Pustules from
+                        acne</figcaption>
+                    </td>
+                    <td><img src="images" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Scar
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_hives.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Wheal/hives
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_comedone.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Open comedone
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_petechiae.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Petechiae
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_purpura.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Purpura from
+                        vasculitis</figcaption>
+                    </td>
+                    <td><img src="images/basics_ecchymosis.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Ecchymosis
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_telangiectasia.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Telangiectasia
+                        within a basal cell carcinoma</figcaption>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- collpaseable 2 -->
+          <!-- arrangment patterns -->
+          <h3 class="feature-subtitle dropdown" data-bs-toggle="collapse" data-bs-target="#collapse2">
+            Pattern nomenclature <i class="bi bi-plus-lg" style="color: white;" id="icon2"></i>
+          </h3>
+          <div class="collapse expandable" id="collapse2">
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <th> Maculopapular: </th>
+                    <td>rash has both macules and papules</td>
+                  </tr>
+                  <tr>
+                    <th>Annular:</th>
+                    <td>Ring-like. </td>
+                  </tr>
+                  <tr>
+                    <th>Arcuate:</th>
+                    <td>Curved, resembling an arc(s).</td>
+                  </tr>
+                  <tr>
+                    <th>Polycyclic: </th>
+                    <td>Multiple curves, like the edge of a cloud.</td>
+                  </tr>
+                  <tr>
+                    <th>Reticulate/Reticular: </th>
+                    <td> Mottled.</td>
+                  </tr>
+                  <tr>
+                    <th>Zosteriform/dermatomal:</th>
+                    <td>distributed along dermatomal lines, like Shingles.</td>
+                  </tr>
+                  <tr>
+                    <th>morbilliform:</th>
+                    <td>literally means “measles-like”, an eruption composed of macules and papules with
+                      truncal predominance</td>
+                  </tr>
+                  <tr>
+                    <th>satellite:</th>
+                    <td>small lesions scattered around the periphery of a larger lesion (e.g. candida diaper dermatitis)
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>target/targetoid:</th>
+                    <td>concentric ring lesions, like a dartboard (e.g. EM)</td>
+                  </tr>
+                  <tr>
+                    <th>other descriptive terms: </th>
+                    <td>Grouped, linear, follicular, discrete, clustered, indurated, fluctuant</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- easy scroll gall -->
+            <div style="overflow-x: scroll;">
+              <table class="table-sm" id="listTable">
+                <tbody>
+                  <tr>
+                    <td><img src="images/basics_maculopapular.png" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Maculopapular
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_annular.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Annular
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_arcuate.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Arcuate
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_polycyclic.png" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Polycyclic
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_reticular.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Reticular
+                      </figcaption>
+                    </td>
+                    <td><img src="images/basics_derma_zoster.png" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Dermatomal rash
+                        from herpes zoster</figcaption>
+                    </td>
+                    <td><img src="images/basics_satellite.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">Satellite
+                        lesions from yeast infection</figcaption>
+                    </td>
+                    <td><img src="images/basics_targetLesion.jpg" alt="" class="tableImg">
+                      <figcaption style="font-size: smaller; text-align: center;" class="figure-caption">targetoid
+                        lesions from EM</figcaption>
+                    </td>
+
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <h3 class="feature-title" id="ATSL">Approach to skin lesions</h3>
+      <div class="row">
+        <div class="col-sm-12 col-md-7 col-lg-7 cleandarkBox" style="color: white;margin-bottom: 1rem;">
+          <h3 class="feature-subsubtitle">Lesion History</h3>
+
+          <ul>
+            <li>Onset</li>
+            <li>Location</li>
+            <li>Pattern of spread</li>
+            <li>Evolution</li>
+            <li>Provoking factors (ie heat, cold, sun, exercise, travel, medications, pregnancy, season</li>
+            <li>Associated symptoms (ie pain, itch)</li>
+          </ul>
+          <h3 class="feature-subsubtitle">Associated symptoms</h3>
+          <ul>
+            <li>Acute: headache, chills, fever, weakness, night sweats</li>
+            <li>Chronic: fatigue, weakness, anorexia, weight loss</li>
+          </ul>
+          <h3 class="feature-subsubtitle">Other particular things on consult history</h3>
+          <ul>
+            <li>PMHx any skin conditions, chronic diseases, etc; FHx of psoriasis, atopy, melanoma, etc; Social history focus on travel and chemical exposures, home environment, sick contacts; Meds, don't forget OTC  </li>
+          </ul>
+          <h3 class="feature-subsubtitle">Diagnosis</h3>
+          <p>Often hinges on history and physical exam. Frequently however, biopsy may be done to confirm or establish a diagnosis.</p>
+        </div>
+        <div class="col-sm-12 col-md-5  col-lg-5" style="margin-bottom: 1rem;">
+          <div class="pearlBox">
+            <h3><i class="bi bi-gem"></i> HISTORY PEARL <i class="bi bi-gem"></i></h3>
+            Remember SCALDA to describe a lesion:
+            <ul>
+              <li>S - Size/Shape/texture </li>
+              <li>C - Colour</li>
+              <li>A - Arrangement</li>
+              <li>L - Lesion type - primary vs secondary</li>
+              <li>D - Distribution - ie Symmetrical, dermatomal, follicular, extensor surfaces, intertriginous (between
+                body folds), dependent areas, sun-exposed skin</li>
+              <li>A - Always check condition/involvement of mucous membranes, nails, hair, and intertriginous areas</li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="feature-title" id="CT">Common treatments</h3>
+      <div class="cleandarkBox" style="padding-bottom: 1rem; margin-bottom: 1rem;">
+        <h3 class="feature-subtitle" id="CT">Topical steroids</h3>
+
+        <div style="overflow-x: scroll;" class="steroidTableContainer">
+          <figure class="figure"></figure>
+          <table class="table table-sm steroidTable">
+            <tbody>
+              <tr>
+                <th>Potency</th>
+                <th>Relative Strength</th>
+                <th>Generics</th>
+                <th>Brand</th>
+                <th>Usage</th>
+              </tr>
+              <tr>
+                <td>Weak</td>
+                <td>x1</td>
+                <td>hydrocortisone–2.5% (1% and 0.5%
+                  available over-the-counter)</td>
+                <td>Emo cort</td>
+                <td>Intertriginous areas,
+                  children, face, thin skin</td>
+              </tr>
+              <tr>
+                <td>Moderate</td>
+                <td>x3</td>
+                <td>betamethasone-valerate-0.1%; hydrocortisone 17-valerate-0.2%; desonide; mometasone furoate</td>
+                <td>Betaderm; Hydroval; Tridesilon; Elocom</td>
+                <td>Arm, leg, trunk</td>
+              </tr>
+              <tr>
+                <td>Potent</td>
+                <td>x6</td>
+                <td>amcinonide</td>
+                <td>Cyclocort</td>
+                <td>Body</td>
+              </tr>
+              <tr>
+                <td>Very potent</td>
+                <td>x9</td>
+                <td>betamethasone dipropionate-0.05%; fluocinonide-0.05%; halcinonide</td>
+                <td>Diprosone; Lindex; Lyderm; Halog</td>
+                <td>Palms and soles</td>
+              </tr>
+              <tr>
+                <td>Extreme</td>
+                <td>x12</td>
+                <td>Clobetasol propionate-0.05% (most potent); betamethasone-dipropionate ointment; halobetasol
+                  proprionate-0.05%</td>
+                <td>Dermovate; diprolene; ultravate</td>
+                <td>Palms and soles</td>
+              </tr>
+            </tbody>
+          </table>
+          <figcaption class="figure-caption text-center" style="color: white;">From Toronto Notes 2020</figcaption>
+          </figure>
+        </div>
+
+
+      </div>
+
+      <h3 class="feature-title" id="P">PHSYIOLOGY</h3>
+      <div class="cleandarkBox" style="margin-bottom:1rem">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6" style="color:white">
+            <h3 class="feature-subsubtitle">Skin functions:</h3>
+            <ul>
+              <li>Protection: continuous recycling and avascularity of epidermis; barrier to UV radiation (melanin), mechanical/chemical insults (sensory/mechanoreceptors), pathogens (immune cells, bactericidal chemicals in sebum, acidic sweat), and dehydration (lipid rich barrier)</li>
+              <li>Thermal Regulation: insulation to maintain body temperature in cool environments; dissipation of heat in warm environments via sweat glands and increased blood flow</li>
+              <li>Sensation: touch, pain, temperature</li>
+              <li>Metabolic: vitamin D synthesis, energy storage of adipose tissue</li>
+              <li>Excretion and absorption: Loss of fluid through sweat, carbon dioxide. Small absorption of lipid-soluble materials (ie gases, steroids, KADE, some toxins).</li>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+            <figure class="figure">
+              <a href="images/index_01.jpg" target="_blank">
+                <img src="images/index_01.jpg" class="figure-img img-basics" alt="" style="height:20rem;">
+              </a>
+              <figcaption class="figure-caption text-center" style="color: white;">Basic skin anatomy
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <h3 class="feature-subsubtitle">Skin Flora</h3>
+        <ul style="color: white;">
+          <li>Skin microflora is dominated by staphylococci (especially coagulase-negative staphylococci, which are a collection of different organisms), streptococci (B hemolytic, especially), corynebacteria, and propionibacterium.</li>
+          <li>Skin near the perineum and rectal region tends to have more enteric organisms present, such as enterobacteriaceae, enterococci, and bacteroides species. </li>
+          <li>Keratinocytes and other constituents of skin prevent colonization by other (relatively pathogenic) organisms; when skin is unhealthy, they are prone to colonization by pathogenic organisms (such as S. aureus in patients with psoriasis).</li>
+        </ul>
+      </div>
+      
+
+      <h3 class="feature-title" id="R">Resources / Image References</h3>
+      <div class="cleandarkBox" style="color: white;">
+        <ul>
+          <li>
+            LearnDerm by visualdx is an amazing resource for fundemental dermatology and has an excellent collection of
+            photos. Click <a href="https://www.visualdx.com/learnderm/lesions">HERE</a> to see more.
+          </li>
+          <li>
+            American Family Physician: 1) <a href="https://www.aafp.org/afp/2010/0315/p726.html">Generalized Rash DDx</a> 2) <a href="https://www.aafp.org/afp/2010/0315/p735.html"> Generalized Rash Approach</a> 3) <a href="https://www.aafp.org/afp/2010/1001/p773.html"> Derm Emergencies</a> 4) <a href="https://www.aafp.org/afp/topicModules/viewTopicModule.htm?topicModuleId=21"> Index of other articles</a>
+          </li>
+          <li>
+            DermNet NZ is a free wiki with lots of pictures about many conditions. <a href="https://dermnetnz.org/">https://dermnetnz.org/</a>
+          </li>
+          <li><a href="https://canadiem.org/describing-a-rash/">https://canadiem.org/describing-a-rash/</a></li>
+          <li>Toronto Notes 2020</li>
+          <li><a href="https://www.aad.org/public">American Academy of Dermatology</a></li>
+          <li><a href="https://learn.pediatrics.ubc.ca/body-systems/general-pediatrics/aproach-to-skin-lesions/">UBC's pediatric guide to skin lesions</a></li>
+        </ul>
+      </div>
+
+      <p id="replaceMe" style="word-wrap: break-word;">
+        
+      </p>
+
+      <button onclick="pleaseWork();">Click for a surprise</button>
+
+
+    </div>
+
+
+
+  </header>
+
+  <!-- footer at bottom of page -->
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <h6 class="text-uppercase font-weight-bold">Contact link :</h6>
+          <p><a style="text-decoration: none; color:white;"
+              href="https://forms.gle/xFZ4GEqJgycuLs5r7">https://forms.gle/xFZ4GEqJgycuLs5r7</a></p>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <h6 class="text-uppercase font-weight-bold">Did you know?</h6>
+          <p id="funfact">
+            <br />
+          </p>
+        </div>
+        <div>
+          <div class="footer-copyright text-center">©2022</div>
+  </footer>
+
+
+  <script src="js/myscripts.js"></script>
+  <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+  <script>
+    populateFunFacts();
+    randomBackground();
+    collapseIcon("collapse1", "icon1")
+    collapseIcon("collapse2", "icon2")
+
+    function pleaseWork() {
+      const url = 'https://raw.githubusercontent.com/jay-joshy/dermProject/main/conditionIndexCSV.csv';
+
+      fetch(url).then(d => d.text()).then(d => done(d));
+
+      function done(d) {
+        var wowJSON = csvJSON(d)
+        document.getElementById("replaceMe").innerHTML = wowJSON;
+      }
+    }
+
+    
+
+
+
+
+  </script>
+
+</body>
+
+</html>

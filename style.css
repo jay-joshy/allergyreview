@@ -1,0 +1,820 @@
+.questionTable {
+    border:none;
+    color:white;
+     
+}
+
+.questionTableRow{
+    height:50px
+}
+
+
+/* The switch - the box around the slider */
+.qswitch {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.qswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.qslider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(107, 107, 107, 0.507);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.qslider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgba(255, 255, 255, 0.733);
+    -webkit-transition: .4s;
+    transition: .4s;
+    /*  */
+}
+
+input:checked+.qslider {
+    background-color: #e43205;
+}
+
+input:focus+.qslider {
+    box-shadow: 0 0 1px #e43205;
+}
+
+input:checked+.qslider:before {
+    -webkit-transform: translateX(86px);
+    -ms-transform: translateX(86px);
+    transform: translateX(86px);
+}
+
+/* Rounded sliders */
+.qslider.round {
+    border-radius: 34px;
+}
+
+.qslider.round:before {
+    border-radius: 50%;
+}
+
+
+/* white box 
+
+/* BOX FOR DIAG TX */
+.whitebox {
+    background-color: rgba(255, 255, 255, 0.80);
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    
+}
+
+.scrollbox::-webkit-scrollbar {
+    display: none;
+  }
+.scrollbox{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+ 
+
+.whitebox p {
+    color: black;
+}
+
+.whitebox .feature-subtitle {
+    color: black;
+}
+
+.whitebox .feature-subsubtitle {
+    color: black;
+}
+
+
+/* lets the "go to top" bottom smoothly scroll to top */
+html,body {
+    scroll-behavior: smooth;
+    margin: 0;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* navbar stylign stuff */
+.navbar-brand {
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.navbar-collapse {
+    float: right;
+}
+
+/* container for carosel with pics */
+.containerSlide {
+    /* Pictures must be potrait mode*/
+    /* height will determine size of the image on screen for cpage */
+    height: 90vh;
+    /* min-height: 20vh;   */
+    background-color: rgba(95, 95, 95, 0.215);
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 0px;
+    border-radius: 10px;
+    padding: 0px;
+
+}
+
+/* icon colour scheme */
+.iconScheme1 {
+    color: white;
+}
+
+i {
+    font-size: 1.3rem;
+}
+
+#backButton {
+    color: rgba(255, 255, 255, 0.822);
+    font-size: 1.7rem;
+    padding-left: 1rem;
+}
+
+#backButton:hover {
+    color: white;
+    font-weight: 800;
+}
+
+.basicsExpandButton {
+
+    height: 80%;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.995);
+    font-weight: 500;
+    font-size: large;
+    vertical-align: middle;
+}
+
+.iconBox {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 1.8rem;
+    text-align: center;
+}
+
+.indexButton {
+    width: 48%;
+    height: 4rem;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.995);
+    font-weight: 500;
+    font-size: large;
+}
+
+/* makes images in carosel be constrained by their height */
+.img-fluid {
+    /* object-fit cover crops image if squished too much.  Contain will do resizing*/
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 90%;
+    margin-top: 10px;
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+
+}
+
+.img-basics {
+    /* object-fit cover crops image if squished too much.  Contain will do resizing*/
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    /* width: auto; */
+    margin-top: 10px;
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* .img-fluid:hover{
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 10rem;
+    -o-object-fit: contain;
+    object-fit: contain;
+} */
+
+/* styling for images in cindex table, might want to toggle their image size for mobile.. */
+.tableImg {
+    object-fit: cover;
+    max-height: 30vh;
+    width: auto;
+}
+
+/* MAKE BACKGROUND IMG */
+.header {
+    /* generate nice background gradient */
+    /* https://cssgradient.io/ */
+    /* background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(216,45,253,1) 100%); */
+
+    /* image file backgrounds */
+    /* https://makebackground.io/bk/cloudy-sky/clouds-in-blue-sky */
+    /* https://coolbackgrounds.io/blue-background/ */
+    /* background-image: url("../images/backgroundClean.jpg"); */
+    /* background-image: url('https://i2.wp.com/files.123freevectors.com/wp-content/original/110493-blue-blurred-background-vector.jpg?w=800&q=95'); */
+    /* background-image: url("../images/cleanBackground3.png"); */
+    /* background-image: url("../images/cleanBackground4.png"); */
+    background-image: url("../images/svgBack5.svg");
+    /* I most like 3, 5, 9,  */
+
+    /* SVGS */
+    /* https://www.svgbackgrounds.com/ */
+    /* https://bgjar.com/ */
+    /* https://app.haikei.app/ */
+    /* https://cssauthor.com/svg-pattern-generator/ */
+
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+/* makes the background image darker */
+.overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* 0.6 is orig */
+}
+
+/* #globalPicContainer{
+    width: 100%;
+} */
+
+.features {
+    margin: 0em auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.feature-title {
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.feature-subtitle {
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.feature-subsubtitle {
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+    font-style: italic;
+}
+
+p {
+    color: white;
+    /* text-align: justify; */
+    /* text-justify: inter-word; */
+}
+
+.dropdown {
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+/* box for def clin box  */
+.cleandarkBox {
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.36);
+    border-radius: 1px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.055);
+
+    padding: 1rem;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+/* BOX FOR DIAG TX */
+.diagtxbox {
+    background-color: rgba(255, 255, 255, 0.80);
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+}
+
+.diagtxbox p {
+    color: black;
+}
+
+.diagtxbox .feature-subtitle {
+    color: black;
+}
+
+.diagtxbox .feature-subsubtitle {
+    color: black;
+}
+
+/* Box surroudning the name of the condition */
+.conNameBox {
+    background-color: rgba(253, 253, 253, 0.95);
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 1px;
+    padding: 20px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-radius: 2px;
+
+}
+
+.conNameBox .feature-title {
+    color: black;
+}
+
+/* time it takes to switch between images on carosel */
+.carousel .carousel-item {
+    transition-duration: 0.3s;
+}
+
+/* caption for carosel images */
+.caroCap {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.68);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.7px);
+    -webkit-backdrop-filter: blur(8.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    text-align: center;
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: black;
+}
+
+
+.page-footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 30px 0 10px;
+}
+
+/* container for movie that makes video right proportions on index */
+.containerForMovie {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* start search bar at 80% so swtiches fit on side. Once shrinks, invoke media below */
+.searchBar {
+    width: 78%;
+}
+
+.toggleBox {
+    float: none;
+}
+
+/* If the screen size is 1000px wide or less, searchbar epxands */
+/* also, container-slide fills width */
+@media screen and (max-width: 770px) {
+    .searchBar {
+        width: 100%;
+    }
+
+    .toggleBox {
+        float: none;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    .searchBar {
+        width: 100%;
+    }
+
+}
+
+/* input for table in cindex */
+#myInput {
+    /* background-image: url('/css/searchicon.png'); */
+    background-color: rgba(194, 194, 194, 0.356);
+    /* Add a search icon to input */
+    background-position: 10px 12px;
+    /* Position the search icon */
+    background-repeat: no-repeat;
+    /* Do not repeat the icon image */
+    width: 100%;
+    /* Full-width */
+    font-size: 16px;
+    /* Increase font-size */
+    padding: 12px 20px 12px 40px;
+    /* Add some padding */
+    border: 1px solid rgba(194, 194, 194, 0.089);
+    border-radius: 2px;
+    /* Add a grey border */
+    margin-bottom: 12px;
+    /* Add some space below the input */
+    color: white;
+}
+
+/* styleing placeholder text in serach bar */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(252, 252, 252, 0.61);
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(252, 252, 252, 0.61);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(252, 252, 252, 0.61);
+}
+
+.steroidTableContainer {
+    /* background-color: rgba(255, 255, 255, 0.911); */
+    border-radius: 0.5rem;
+}
+
+.steroidTable {
+    color: white;
+}
+
+/* basics table */
+#basicsTable {
+    color: white;
+}
+
+#basicsTable th {
+    font-weight: 600;
+}
+
+#basicsTable td {
+    text-align: center
+}
+
+#listTable {
+    background-color: rgba(255, 255, 255, 0.836);
+    width: 100%;
+}
+
+/* table CSS  */
+.myTable-outer {
+    /* for hori scroll */
+    overflow-x: scroll;
+}
+
+#myTable {
+    border-collapse: collapse;
+    /* Collapse borders */
+    width: 100%;
+    /* Full-width */
+    border: 1px solid rgb(0, 0, 0);
+    /* Add a grey border */
+    font-size: 18px;
+    /* Increase font-size */
+    /* background-color: rgba(255, 255, 255, 0.884); */
+
+
+}
+
+#myTable th, #myTable td {
+    text-align: left;
+    /* Left-align text */
+    padding: 12px;
+    /* Add padding */
+    min-width: 20vw;
+
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid rgba(119, 119, 119, 0.582);
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.36);
+    border-radius: 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 0.9rem;
+}
+
+#myTable tr.tbheader {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #1a1a1a;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+
+
+
+}
+
+#myTable tr:hover {
+    background-color: #000000a9;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+}
+
+/* FOr csv input file workaround */
+input[type="file"] {
+    display: none;
+}
+
+#csvinputbutton {
+    color: white;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.3px);
+    -webkit-backdrop-filter: blur(8.3px);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.custom-file-upload {
+    background-color: white;
+    background-position: 10px 12px;
+    /* Position the search icon */
+    background-repeat: no-repeat;
+    /* Do not repeat the icon image */
+    width: 100%;
+    /* Full-width */
+    font-size: 16px;
+    /* Increase font-size */
+    padding: 12px 20px 12px 40px;
+    /* Add some padding */
+    border: 1px solid #ddd;
+    /* Add a grey border */
+    margin-bottom: 12px;
+    /* Add some space below the input */
+    cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.imgswitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.captionswitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.imgswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.captionswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(107, 107, 107, 0.507);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgba(255, 255, 255, 0.733);
+    -webkit-transition: .4s;
+    transition: .4s;
+    /*  */
+}
+
+input:checked+.slider {
+    background-color: #104068;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #104068;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+/* width of the range slider in its parent div */
+.slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+}
+
+/* The slider itself */
+.rangeslider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 15px;
+    /* Specified height */
+    border-radius: 5px;
+    background: #96969693;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.rangeslider:hover {
+    opacity: 0.9;
+    /* Fully shown on mouse-over */
+}
+
+/* The rangeslider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.rangeslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    border-radius: 50%;
+    /* background: #04AA6D; */
+    background: rgba(255, 255, 255, 0.815);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.rangeslider::-moz-range-thumb {
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: #04AA6D;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 50%;
+}
+
+#linksbox {
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
+
+.pearlBox {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.64);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.7px);
+    -webkit-backdrop-filter: blur(11.7px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    padding: 1rem;
+}
+
+.filter-green{
+    filter: invert(48%) sepia(0%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}

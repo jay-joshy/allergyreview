@@ -1,0 +1,413 @@
+<!-- very important links
+https://websitesetup.org/bootstrap-tutorial-for-beginners/#include-jquery
+
+for the search/cindx
+https://www.w3schools.com/howto/howto_js_filter_table.asp
+
+making nice boxes for tezt
+https://code-boxx.com/box-around-text-html/
+-->
+
+<!-- 
+    IMPORTANT:
+    TO POPULATE THE PAGE CORRECTLY, YOU MUST
+    1. manually insert links for pictures
+    2. at the bottom <script> enter in your condition name from the CSV
+    var infoarray = getJSONobjectStringArray("Condition Name");
+
+    For writing in CSV: you cannot use semicolons or enters. Instead of enters, use + or <br>
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+     <!-- Links to bootstrap 5 and also stylesheet -->
+     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
+     
+     <link rel="stylesheet" href="css/style.css">
+     <!-- Bootstrap Font Icon CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+     <title>Family Dermatology</title>
+ </head>
+ 
+ <body id="body">
+     <!-- Navbar-->
+     <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+         <div class="container-fluid">
+             <a href="index.html" class="navbar-brand">JY_Dermatology</a>
+ 
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+ 
+             <!-- buttons on right-side of navbar -->            
+             <div class="collapse navbar-collapse" id="navmenu">
+                 <ul class="navbar-nav ms-auto">
+                     <li class="nav-item">
+                         <a href="basics.html" class="nav-link">
+                             Basics
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="cindex.html" class="nav-link" style="padding-right: 1rem;">
+                             Condition Index
+                         </a>
+                     </li>
+                     <!-- image caption toggle -->
+                     <li class="nav-item">
+                         <p
+                             style="display: inline-block; padding-right: 0.2rem;padding-top: 0.5rem;color: rgb(172, 172, 172);">
+                             Image Captions:</p>
+                         <label class="imgswitch">
+                             <input type="checkbox" checked>
+                             <span class="slider round"></span>
+                         </label>
+                     </li>
+                 </ul>
+                 
+             </div>   
+         </div>
+     </nav>
+ 
+     <!-- Header is the main container for content, with overlaid background photo -->
+     <header class="page-header header container-fluid" style="padding-top: 60px;" id="top">
+         <div class="overlay"></div>
+ 
+         <!-- Need features in order for the text to properly show as white -->
+         <!-- text wrapping around containerSlide with images on right side.
+             Images should all be potrait ratio for now -->
+         <div class="container-fluid features">
+             <!-- Name, tags, def, epid, and pictures -->
+             <!--PICS  -->
+             <div class="container-fluid col-lg-7 col-md-6 col-sm-12 float-sm-end" id="globalPicContainer">
+ 
+                 <!-- slider above picture to help resize -->
+                 <div class="container-fluid" style="padding-left: 15%;padding-right: 15%; padding-bottom: 10px;">
+                     <div class="slidecontainer">
+                         <input type="range" min="30" max="150" value="90" class="rangeslider" id="myRange">
+                     </div>
+                 </div>
+ 
+                 <!--slideshow that will not cycle-->
+                 <!-- Images are clickable to open in new tab for zooming if needed -->
+                 <!-- Can add float-end to class to shift right ... but eh -->
+                 <div class="containerSlide" id="caro">
+                     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                         <div class="carousel-indicators">
+                             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                                 aria-current="false" aria-label="Slide 1"></button>
+                             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                                 aria-label="Slide 2"></button>
+                             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                                 aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6"
+                            aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="7"
+                            aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="8"
+                            aria-label="Slide 9"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="9"
+                            aria-label="Slide 10"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="10"
+                            aria-label="Slide 11"></button>
+                         </div>
+                         <div class="carousel-inner" id="caroinner">
+                            <!-- PIC 1 -->
+                            <div class="carousel-item active">
+                                <div class="containerSlide text-center">
+                                    <a href="images/atopicdermatitis_01.jpg" target="_blank">
+                                        <img src="images/atopicdermatitis_01.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap"> Flexural involvement in childhood atopic dermatitis.
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PIC 2 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://nationaleczema.org/wp-content/uploads/2020/07/eczema_atopic_dermatitis.jpg" target="_blank">
+                                        <img src="https://nationaleczema.org/wp-content/uploads/2020/07/eczema_atopic_dermatitis.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">Note excoriation. AD can lead to a vicious cycle of itching and scratching</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PIC 3 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/54/sn7_atopicdermatitis2.jpg" target="_blank">
+                                        <img src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/54/sn7_atopicdermatitis2.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">AD of the chest</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PIC 4 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/54/sn7_infanteczema.jpg" target="_blank">
+                                        <img src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/54/sn7_infanteczema.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">
+                                            In infants, atopic dermatitis (infantile eczema) usually appears as red, itchy patches that are associated with very dry skin.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PIC 5 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://images.ctfassets.net/1ny4yoiyrqia/2PiyygkPgc8MXYrZdq2ICc/87fa12c6344a13062744110d7fb932d0/infant-face.jpg?fm=webp&w=450&h=450" target="_blank">
+                                        <img src="https://images.ctfassets.net/1ny4yoiyrqia/2PiyygkPgc8MXYrZdq2ICc/87fa12c6344a13062744110d7fb932d0/infant-face.jpg?fm=webp&w=450&h=450" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap"> In babies, the rash often develops on the cheeks. The rash often feels dry, raw, and scaly</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PIC 6 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://images.ctfassets.net/1ny4yoiyrqia/RBua4noiocDwGi8uum4rP/b200b49f1ded8cf3548ff12a0fcd640c/swollen-discolored.png?fm=webp&w=450&h=450" target="_blank">
+                                        <img src="https://images.ctfassets.net/1ny4yoiyrqia/RBua4noiocDwGi8uum4rP/b200b49f1ded8cf3548ff12a0fcd640c/swollen-discolored.png?fm=webp&w=450&h=450" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">slightly swollen and discolored skin. In people who have white skin, the swollen skin tends to look red. People who have darker skin see a less noticeable color change, which ranges from a subtle gray to violet-brown</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PIC 7 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://images.ctfassets.net/1ny4yoiyrqia/5oTgTGROSxlF9IAVpGz8sY/f9c1116d6732c5efe70436d95c982373/scaly-crusty.png?fm=webp&w=450&h=450" target="_blank">
+                                        <img src="https://images.ctfassets.net/1ny4yoiyrqia/5oTgTGROSxlF9IAVpGz8sY/f9c1116d6732c5efe70436d95c982373/scaly-crusty.png?fm=webp&w=450&h=450" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">Sometimes a child develops a rash that causes patches of slightly raised, dry, and scaly AD.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PIC 8 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://images.ctfassets.net/1ny4yoiyrqia/ZYj9PUZgGqPfEE6CgNxwv/4d13ae91ac3f3281966f6495232c0b9d/atopic-dermatitis_symptoms_adult.jpg?fm=webp&w=450&h=450" target="_blank">
+                                        <img src="https://images.ctfassets.net/1ny4yoiyrqia/ZYj9PUZgGqPfEE6CgNxwv/4d13ae91ac3f3281966f6495232c0b9d/atopic-dermatitis_symptoms_adult.jpg?fm=webp&w=450&h=450" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">Adults who have AD often have darker patches and scaly skin, as does this 30-year-old woman.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PIC 9 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://images.ctfassets.net/1ny4yoiyrqia/1ZJLKhd5E1fN5CDpzA4IkL/f797e5b5401ed2410559419c6d2027a0/raw-bleeding.png?fm=webp&w=450&h=450" target="_blank">
+                                        <img src="https://images.ctfassets.net/1ny4yoiyrqia/1ZJLKhd5E1fN5CDpzA4IkL/f797e5b5401ed2410559419c6d2027a0/raw-bleeding.png?fm=webp&w=450&h=450" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">Scratching can lead to raw, irritated skin that bleeds. Sometimes, the skin opens and leaks fluids.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PIC 10 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://www.merckmanuals.com/-/media/manual/professional/images/a/t/o/atopic_dermatitis_chronic_high.jpg?thn=0&sc_lang=en" target="_blank">
+                                        <img src="https://www.merckmanuals.com/-/media/manual/professional/images/a/t/o/atopic_dermatitis_chronic_high.jpg?thn=0&sc_lang=en" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">In the chronic phase of atopic dermatitis, lesions are dry and lichenified.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PIC 11 -->
+                            <div class="carousel-item">
+                                <div class="containerSlide text-center">
+                                    <a href="https://www.merckmanuals.com/-/media/manual/professional/images/s/k/i/skin_lesion_lichenification_high.jpg?thn=0&sc_lang=en" target="_blank">
+                                        <img src="https://www.merckmanuals.com/-/media/manual/professional/images/s/k/i/skin_lesion_lichenification_high.jpg?thn=0&sc_lang=en" class="img-fluid" alt="">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <p class="caroCap">Lichenification is thickening of the skin with accentuation of normal skin markings; it is a result of chronic scratching or rubbing, which in this patient occurred during the chronic phase of atopic dermatitis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- ADD MORE PICS AS NEEDED -->
+
+                        </div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                             data-bs-slide="prev">
+                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Previous</span>
+                         </button>
+                         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                             data-bs-slide="next">
+                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Next</span>
+                         </button>
+                     </div>
+                 </div>
+             </div>
+ 
+             <!-- Left side of screen: name, def, clinical pic -->
+             <div class="col-lg-5 col-md-6 col-sm-12">
+                 <!-- buffer to stop connameBox overlapping carosel LOL -->
+                 <div>
+                     <p style="color: rgba(255, 255, 255, 0);font-size: 0.01rem;">bufferLOL</p>
+                 </div>
+ 
+                 <!-- Name of condition with a nice box around it -->
+                 <div class="conNameBox">
+                     <h3 class="feature-title text-center" id="cName"></h3>
+                 </div>
+ 
+                 <!-- box the definition and clinical presentation -->
+                 <div class="cleandarkBox">
+                     <!-- Definition -->
+                     <p id="defin" style="padding-top: 1rem;"></p>
+ 
+                     <!-- clinical presentation -->
+ 
+                     <h3 class="feature-subtitle">
+                         <div class="iconBox" style="display: inline-block;"><i class="bi bi-person"></i></div> Clincal
+                         Presentation
+                     </h3>
+                     <h3 class="feature-subsubtitle">Symptoms</h3>
+                     <p id="sx">
+ 
+                     </p>
+                     <h3 class="feature-subsubtitle">Physical Exam</h3>
+                     <p id="pe">
+                     </p>
+ 
+                     <!-- Image just as an example, can use for unique pages -->
+                     <!-- <img src="images/dororo.jpg" alt="" style="text-align: center; width:100%"> -->
+                 </div>
+             </div>
+ 
+             <!-- diagnosis and investigations in separate box-->
+             <div class="diagtxbox col-lg-5 col-md-6 col-sm-12" id="DTbox">
+ 
+                 <h3 class="feature-subtitle"><i class="bi bi-search" style="color: rgb(18, 37, 73);"></i> Diagnosis and
+                     Investigations</h3>
+                 <p id="diag">
+ 
+                 </p>
+                 <h3 class="feature-subsubtitle">Differential</h3>
+                 <p id="ddx">
+ 
+                 </p>
+ 
+                 <!--Treatment-->
+                 <h3 class="feature-subtitle"><i class="bi bi-bandaid"></i> Management</h3>
+                 <p id="manage">
+ 
+                 </p>
+                 <img src="images/atopicdermatitis_02.png" class="img-fluid" alt="">
+             </div>
+ 
+             <!-- box rest of the bottom up -->
+             <div class="cleandarkBox col-lg-5 col-md-6 col-sm-12" id="botBox">
+                 <!-- epidemiology -->
+                 <h3 class="feature-subtitle"><i class="bi bi-graph-up"></i> Epidemiology</h3>
+                 <p id="epid"></p>
+ 
+                 <!--Pathophys-->
+                 <h3 class="feature-subtitle"><i class="bi bi-clipboard2-pulse-fill"></i> Pathophysiology</h3>
+                 <p id="patho">
+                 </p>
+ 
+                 <!--Summary-->
+                 <h3 class="feature-subtitle">Summary</h3>
+                 <p id="summary">
+                 </p>
+ 
+                 <!--Further Reading and References-->
+                 <div id = "linksbox">
+                     <h3 class="feature-subtitle dropdown" style="padding-bottom: 0.5rem;" data-bs-toggle="collapse" data-bs-target="#links">
+                         Further Reading and References <i class="bi bi-plus-lg" style="color: white;" id="refIcon"></i>
+                     </h3>
+                     <ul style="color:white" id = "links" class="collapse">
+                        
+                     </ul>
+                 </div>
+             </div>
+ 
+             <!-- Tags -->
+             <p style="font-style: italic;" class="text-center" id="tags"></p>
+ 
+             <h3 class="feature-subtitle text-center">
+                 <a href="#top" style="color: white;">Back to top</a>
+             </h3>
+         </div>
+     </header>
+ 
+     <!-- footer at bottom of page -->
+     <footer class="page-footer">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-8 col-md-8 col-sm-12">
+                     <h6 class="text-uppercase font-weight-bold">Contact link    :</h6>
+                     <p><a  style="text-decoration: none; color:white;" href="https://forms.gle/xFZ4GEqJgycuLs5r7">https://forms.gle/xFZ4GEqJgycuLs5r7</a></p>
+ 
+                 </div>
+                 <div class="col-lg-4 col-md-4 col-sm-12">
+                     <h6 class="text-uppercase font-weight-bold">Did you know?</h6>
+                     <p id="funfact">
+                         <br />
+                     </p>
+                 </div>
+                 <div>
+                     <div class="footer-copyright text-center">©2022</div>
+     </footer>
+ 
+     <script src="js/myscripts.js"></script>
+     <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+     <script>
+         randomBackground();
+         populateFunFacts();    
+         //fill in with data from locally loaded JSON from CSV
+         // PLEASE ENTER NAME OF CONDITION TO FILL IN THIS WEBPAGE
+         // the name should be the string in the CSV
+         var infoarray = getJSONobjectStringArray("Atopic dermatitis");       
+         populateCPage(infoarray);
+ 
+         imgSliderHeight()
+         imgCapToggle()
+         addResizeBoxListeners()    
+         collapseIcon("links","refIcon")
+ 
+         /*
+         document.addEventListener("DOMContentLoaded", function(){
+             console.log(document.getElementById("myRange").value)
+         });
+         */
+         
+         
+ 
+     </script>
+ </body>
+ 
+ </html>
